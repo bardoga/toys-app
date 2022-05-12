@@ -1,0 +1,13 @@
+/* COMPONENTS */
+
+@import url(./cmp/root-cmp.css);
+@import url(./cmp/toy-list.css);
+@import url(./cmp/toy-preview.css);
+
+/* PAGES */
+
+@import url(./pages/toy-app.css);
+body {
+    margin: 0;
+    background-color: bisque;
+}
