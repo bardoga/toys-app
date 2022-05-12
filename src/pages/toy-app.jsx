@@ -11,13 +11,14 @@ class _ToysApp extends React.Component {
 
 
     onRemoveToy = (toyId, e) => {
-        e.stopPropogation()
+        // e.stopPropogation()
         this.props.removeToy(toyId)
     }
 
     render() {
         const { toys } = this.props
-        console.log('your toys are :', toys)
+        // console.log('your toys are :', toys)
+        if (!toys) return <div>Loading toys...</div>
         return (
             <section className="toy-app">
                 <h2>Toys App:</h2>

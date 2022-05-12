@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { toyService } from '../services/toy.service.js';
-// const { connect } = ReactRedux
-// const { Link } = ReactRouterDOM
 import { loadToys, removeToy, saveToy } from '../store/actions/toy.action.js'
 
 
@@ -21,15 +19,21 @@ class _ToyDetails extends React.Component {
     }
 
 
+    onClose =() => {
+        this.props.history.push('/toys')
+    }
+
+
     render() {
         const { toy } = this.state
-        if (!toy) return <div>Loading toy...</div>
+        if (!toy) return <div>Loading...</div>
         return (
             <section className='toy-details'>
-                    <h2>Toy:{toy.name}</h2>
-                    <h2>Price:{toy.price}</h2>
-                    <h2>In Stock? {toy.inStock? "yes" : "no"}</h2>
-
+                <h2>Toy:{toy.name}</h2>
+                <h2>Price:{toy.price}</h2>
+                <h2>In Stock? {toy.inStock ? "yes" : "no"}</h2>
+                <h3>Added at:{toy.createdAt}</h3>
+                <button onClick={this.onClose }>Close</button>
             </section>
         )
     }

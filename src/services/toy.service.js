@@ -38,9 +38,9 @@ function getEmptyToy() {
 
 //TEST DATA
 // storageService.post(STORAGE_KEY, {
-//     name: "ted",
-//     price: 300,
+//     name: "talking tom",
+//     price: 100,
 //     labels: ["Doll", "Battery Powered", "Baby"],
-//     createdAt: Date.now(),
-//     inStock: false
+//     createdAt: new Date().toLocaleDateString(),
+//     inStock: true
 // }).then(x => console.log(x))

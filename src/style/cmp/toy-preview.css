@@ -8,6 +8,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: brown;
     cursor: pointer;
+    box-shadow: 5px 5px 15px 6px rgba(0, 0, 0, 0.4);
 }
 
 .toy-preview h3 {
@@ -79,6 +80,7 @@
 .toy-preview p {
     font-size: 1.5rem;
     cursor: pointer;
+    display: inline-block;
 }
 
 .detail {
@@ -89,6 +91,8 @@
     bottom: 52px;
     color: black;
     padding-left: 10px;
+    display: inline-block;
+    /* background-color: yellow; */
 }
 
 .edit {
@@ -99,4 +103,8 @@
     bottom: 52px;
     color: black;
     padding-left: 30px;
+    background-color: yellow;
+    border: none;
+    display: inline-block;
+    /* width: 40px; */
 }
