@@ -15,7 +15,7 @@ class _ToyEdit extends React.Component {
         const { toyId } = this.props.match.params
         toyService.getById((toyId))
             .then((toy) => {
-                this.setState({ toy })
+                this.setState(prevState => ({toy}))
             })
     }
 
@@ -24,9 +24,11 @@ class _ToyEdit extends React.Component {
     }
 
     render() {
+        const {toy} = this.state
+        if (!toy) return <div>Loading...</div>
         return (
             <section className='toy-edit'>
-                <h2>Update Toy:</h2>
+                <h3>Edit Toy: {toy.name} </h3>
                 <label htmlFor="toy">Toy name:</label>
                 <input type="text" />
                 <br />

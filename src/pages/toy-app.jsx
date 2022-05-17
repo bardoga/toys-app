@@ -26,8 +26,6 @@ class _ToysApp extends React.Component {
             </section>
         )
     }
-
-
 }
 
 const mapStateToProps = (storeState) => {

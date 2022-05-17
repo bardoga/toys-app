@@ -19,7 +19,7 @@ class _ToyDetails extends React.Component {
     }
 
 
-    onClose =() => {
+    onClose = () => {
         this.props.history.push('/toys')
     }
 
@@ -29,11 +29,11 @@ class _ToyDetails extends React.Component {
         if (!toy) return <div>Loading...</div>
         return (
             <section className='toy-details'>
-                <h2>Toy:{toy.name}</h2>
-                <h2>Price:{toy.price}</h2>
-                <h2>In Stock? {toy.inStock ? "yes" : "no"}</h2>
-                <h3>Added at:{toy.createdAt}</h3>
-                <button onClick={this.onClose }>Close</button>
+                <h2>Toy: {toy.name}</h2>
+                <h2>Price: {toy.price}</h2>
+                <h2>In Stock: {toy.inStock ? "yes" : "no"}</h2>
+                <h2>Added at: {toy.createdAt}</h2>
+                <button onClick={this.onClose}>Close</button>
             </section>
         )
     }

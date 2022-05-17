@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { inc } from './store/actions/counter.action'
-import logo from './logo.svg';
+// import { inc } from './store/actions/counter.action'
+// import logo from './logo.svg';
 import { ToysApp } from './pages/toy-app.jsx'
 import { ToyDetails } from './cmp/toy-details.jsx'
 import { ToyEdit } from './cmp/toy-edit.jsx'
@@ -20,7 +20,7 @@ function _App(props) {
               props.inc()
             }}>+</button>
           </h2> */}
-          <img src={logo} className="app-logo" alt="logo" />
+          {/* <img src={logo} className="app-logo" alt="logo" /> */}
           <nav>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
@@ -83,8 +83,4 @@ function mapStateToProps(storeState) {
     status: storeState.statusModule.status
   }
 }
-const mapDispatchToProps = {
-  inc
-}
-
-export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
+export const App = connect(mapStateToProps)(_App)
