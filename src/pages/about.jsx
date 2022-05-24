@@ -29,7 +29,7 @@ export class About extends Component {
         return (
             <div style={{ height: '70vh', width: '70%', marginLeft:'auto',marginRight:'auto',marginTop:'2rem'}}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'AIzaSyAJE4383I4f_Ab6GJBjt6-Gm_ULIDKjBGQ' }}
+                    bootstrapURLKeys={{ key }}
                     defaultCenter={this.state.center}
                     center={this.state.center}
                     defaultZoom={this.state.zoom}
