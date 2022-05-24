@@ -1,5 +1,10 @@
 const initialState = {
-    toys: []
+    toys: [],
+    filterBy: {
+        name: '',
+        inStock: '',
+        labels: []
+    }
 }
 
 export function toyReducer(state = initialState, action) {
@@ -17,6 +22,8 @@ export function toyReducer(state = initialState, action) {
             toys = state.toys.map(currToy =>
                 (currToy._id === action.toy._id) ? action.toy : currToy)
             return {...state, toys }
+        case 'SET_FILTERBY':
+            return {...state, filterBy: action.filterBy }
         default:
             return state
     }

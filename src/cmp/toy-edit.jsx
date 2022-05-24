@@ -1,66 +1,79 @@
-
-import React from 'react';
-import { connect } from "react-redux";
+import React, { useEffect, useState, Component } from 'react';
+import { useDispatch } from 'react-redux';
 import { toyService } from '../services/toy.service.js';
-import { loadToys, removeToy, saveToy } from '../store/actions/toy.action.js'
+import { saveToy } from '../store/actions/toy.action.js';
+import Multiselect from 'multiselect-react-dropdown';
 
 
-class _ToyEdit extends React.Component {
-    state = {
-        toy: null
-    }
+export const ToyEdit = (props) => {
 
-    componentDidMount() {
-        console.log('component mounted from toy details')
-        const { toyId } = this.props.match.params
+    const [toy, setToy] = useState(null)
+    // const [selectedValues, setSelectedValues] = useState(null)
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        const { toyId } = props.match.params
         toyService.getById((toyId))
             .then((toy) => {
-                this.setState(prevState => ({toy}))
+                setToy(toy)
+            })
+    }, [])
+
+    const onclose = () => {
+        props.history.push('/toys')
+    }
+
+
+    const HandleChange = (ev) => {
+        console.log(ev)
+        const target = ev.target
+        const field = target.name
+        const value = target.type === 'number' ? (+target.value || '') : target.value
+        setToy((prevToy) => ({ ...prevToy, [field]: value }))
+    }
+
+    const onSaveToy = (ev) => {
+        ev.preventDefault()
+        toyService.save({ ...toy })
+            .then(() => {
+                props.history.push('/toys')
+
             })
     }
 
-    onclose = () => {
-        this.props.history.push('/toys')
-    }
+    // const HandleSelect = (ev) => {
+    //     console.log(ev[0].label)
+    // }
 
-    render() {
-        const {toy} = this.state
-        if (!toy) return <div>Loading...</div>
-        return (
-            <section className='toy-edit'>
-                <h3>Edit Toy: {toy.name} </h3>
+
+    if (!toy) return <div>Loading...</div>
+    console.log(toy.labels)
+    const currToy = toy.name
+    return (
+        <section className='toy-edit'>
+            <form onSubmit={onSaveToy}>
+                <h3>Edit Toy: {currToy} </h3>
                 <label htmlFor="toy">Toy name:</label>
-                <input type="text" />
+                <input onChange={HandleChange} type="text" id='name' name='name' value={toy.name} />
                 <br />
                 <label htmlFor="price">Price</label>
-                <input type="text" />
+                <input onChange={HandleChange} type="text" id='price' name='price' value={toy.price} />
                 <br />
-                <label htmlFor="sale">On sale?</label>
-                <input type="text" />
+                <Multiselect
+                    options={toyService.getLabels()} // Options to display in the dropdown
+                    selectedValues={toy.labels} // Preselected value to persist in dropdown
+                    // onSelect={onSelect} // Function will trigger on select event
+                    // onRemove={onRemove} // Function will trigger on remove event
+                    displayValue="name" // Property name to display in the dropdown options
+                />
                 <br />
-                <button onClick={this.onclose}>Close</button>
+                <button onClick={onclose}>Close</button>
+                <button onClick={onSaveToy}>Save</button>
+
+            </form>
 
 
-            </section>
-        )
-    }
+        </section>
+    )
 }
-
-
-const mapStateToProps = (storeState) => {
-    return {
-        toys: storeState.toyModule.toys
-    }
-}
-const mapDispatchToProps = {
-    loadToys,
-    removeToy,
-    saveToy
-
-}
-
-
-export const ToyEdit = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(_ToyEdit)

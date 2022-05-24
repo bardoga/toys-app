@@ -51,3 +51,13 @@ export function saveToy(toy) {
             })
     }
 }
+
+export function setFilter(filterBy) {
+    return (dispatch) => {
+        return dispatch({
+            type: 'SET_FILTERBY',
+            filterBy
+        })
+
+    }
+}

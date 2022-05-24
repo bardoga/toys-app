@@ -1,0 +1,14 @@
+//COMPONENTS
+@import 'cmp/_root-cmp.scss';
+@import 'cmp/_toy-list.scss';
+@import 'cmp/_toy-preview.scss';
+@import 'cmp/_toy-edit.scss';
+@import 'cmp/_toy-details.scss';
+@import 'cmp/_toy-filter.scss';
+//PAGES
+@import 'pages/_toy-app.scss';
+body {
+    margin: 0;
+    background-color: whitesmoke;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}

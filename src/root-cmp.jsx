@@ -1,86 +1,51 @@
-import { connect } from "react-redux";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-// import { inc } from './store/actions/counter.action'
-// import logo from './logo.svg';
 import { ToysApp } from './pages/toy-app.jsx'
+import { About } from './pages/about.jsx'
+import { Home } from './pages/home.jsx'
 import { ToyDetails } from './cmp/toy-details.jsx'
 import { ToyEdit } from './cmp/toy-edit.jsx'
+import { Login } from "./pages/login.jsx"
+import { Signup } from "./pages/signup.jsx"
+import routes from "./routes";
+import { AppHeader } from "./cmp/app-header.jsx";
 
-function _App(props) {
+
+export function App() {
   return (
     <div className="app">
+      <AppHeader />
       <Router>
-
         <header className="app-header">
-          {/* <h1>Hello React</h1> */}
-          {/* <h3>Status: {props.status}</h3> */}
-          {/* <h2>
-            Count {props.count}
-            <button onClick={() => {
-              props.inc()
-            }}>+</button>
-          </h2> */}
-          {/* <img src={logo} className="app-logo" alt="logo" /> */}
           <nav>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
             <Link to="/toys">Toys</Link>
           </nav>
         </header>
         <main>
+          {/* <Switch>
+          {routes.map((route) => {
+            <Route
+              path={route.path}
+              exact
+              key={route.path}
+              component={route.component}
+            />
+          })} */}
+          {/* {/* </Switch> */}
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={About} />
             <Route path="/toys" exact component={ToysApp} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={Signup} />
             <Route path="/toys/:toyId?" exact component={ToyDetails} />
-            <Route path="/toys/edit/:toyId?" exact component={ToyEdit} />
-
+            <Route path="/toys/edit/:toyId?" exact component={ToyEdit} /> */}
           </Switch>
         </main>
       </Router>
     </div>
   );
 }
-
-
-function Home() {
-  return (
-    <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-
-        <p>
-          That feels like an existential question, don't you
-          think?
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
-  );
-}
-
-
-
-function mapStateToProps(storeState) {
-  return {
-    count: storeState.countModule.count,
-    status: storeState.statusModule.status
-  }
-}
-export const App = connect(mapStateToProps)(_App)

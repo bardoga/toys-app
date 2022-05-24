@@ -1,0 +1,19 @@
+    .toy-app h2 {
+        color: black;
+    }
+    
+    .active {
+        color: yellow;
+    }
+    
+    .new-toy {
+        /* position: absolute; */
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-right: auto;
+        margin-left: auto;
+        width: fit-content;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
